@@ -298,5 +298,5 @@ interface = gr.Interface(
 
 if __name__ == "__main__":
     logger.info("Starting Gradio interface...")
-    interface.launch(server_name="0.0.0.0", server_port=8860, debug=True)
+    interface.launch(server_name="localhost", server_port=8860, debug=True)
     logger.info("Gradio interface launched successfully")
