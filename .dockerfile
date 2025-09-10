@@ -20,5 +20,5 @@ WORKDIR /app
 COPY --chown=user ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY --chown=user ./app.py app.py
-EXPOSE 7860
+EXPOSE 8860
 CMD ["python", "app.py"]
