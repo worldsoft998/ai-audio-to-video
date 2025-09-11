@@ -24,8 +24,8 @@ from langchain.chains import LLMChain
 from urllib.request import getproxies
 
 proxies = getproxies()
-os.environ["http_proxy"]  = proxies["http"]
-os.environ["https_proxy"] = proxies["https"]
+# os.environ["http_proxy"]  = proxies["http"]
+# os.environ["https_proxy"] = proxies["https"]
 os.environ["no_proxy"]    = "localhost, 127.0.0.1/8, ::1"
 
 # Configuration Constants
