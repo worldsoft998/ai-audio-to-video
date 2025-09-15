@@ -28,6 +28,11 @@ proxies = getproxies()
 # os.environ["https_proxy"] = proxies["https"]
 os.environ["no_proxy"]    = "localhost, 127.0.0.1/8, ::1"
 
+# port forward
+from google.colab.output import eval_js
+print(eval_js("google.colab.kernel.proxyPort(8860)"))
+
+
 # Configuration Constants
 SEGMENT_DURATION = 5  # seconds
 MAX_AUDIO_DURATION = 3000  # seconds (50 minutes)
