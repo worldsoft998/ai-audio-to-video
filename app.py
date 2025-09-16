@@ -30,7 +30,7 @@ os.environ["no_proxy"]    = "localhost, 127.0.0.1/8, ::1"
 
 # port forward
 from google.colab.output import eval_js
-print(eval_js("google.colab.kernel.proxyPort(8860)"))
+print(eval_js("google.colab.kernel.proxyPort(7860)"))
 
 
 # Configuration Constants
@@ -311,5 +311,5 @@ interface = gr.Interface(
 
 if __name__ == "__main__":
     logger.info("Starting Gradio interface...")
-    interface.launch(server_name="0.0.0.0", server_port=8860, share=True, debug=True)
+    interface.launch(server_name="0.0.0.0", server_port=7860, share=True, debug=True)
     logger.info("Gradio interface launched successfully")
