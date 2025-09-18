@@ -1,4 +1,4 @@
-gradio==4.19.2
+gradio==4.44.0
 transformers==4.38.1
 diffusers==0.26.3
 selenium==4.18.1
@@ -10,3 +10,4 @@ torch==2.2.1
 webdriver-manager==4.0.1
 ffmpeg-python==0.2.0
 huggingface_hub==0.20.3
+pydantic==2.10.6
