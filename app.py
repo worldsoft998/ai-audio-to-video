@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+
+# huggingface
+
 import gradio as gr
 import sys
 import os
@@ -23,12 +27,13 @@ from langchain.chains import LLMChain
 
 from urllib.request import getproxies
 
+# huggingface gitpod colab 
 proxies = getproxies()
 # os.environ["http_proxy"]  = proxies["http"]
 # os.environ["https_proxy"] = proxies["https"]
 os.environ["no_proxy"]    = "localhost, 127.0.0.1/8, ::1"
 
-# port forward
+# colab port forward
 # from google.colab.output import eval_js
 # print(eval_js("google.colab.kernel.proxyPort(7860)"))
 
@@ -69,12 +74,31 @@ whisper_asr = pipeline("automatic-speech-recognition", model="openai/whisper-lar
 logger.info("Whisper model initialized")
 
 logger.info("Initializing Stable Diffusion model...")
+
+# stable_diffusion = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16)
+
+# huggingface
 stable_diffusion = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float32)
+
+# huggingface
+# commandline_args = os.environ.get('COMMANDLINE_ARGS', "--skip-torch-cuda-test --no-half")
+
+
 stable_diffusion = stable_diffusion.to("cuda" if torch.cuda.is_available() else "cpu")
 logger.info("Stable Diffusion model initialized")
 
 logger.info("Initializing GPT-2 model...")
 text_gen_pipeline = pipeline("text-generation", model="gpt2")
+
+# huggingface
+text_gen_pipeline.model.config.pad_token_id = text_gen_pipeline.model.config.eos_token_id
+text_gen_pipeline.tokenizer.pad_token = text_gen_pipeline.tokenizer.eos_token
+
+
+# huggingface
+# text_gen_pipeline = text_gen_pipeline.to("cuda")
+
+
 llm = HuggingFacePipeline(pipeline=text_gen_pipeline)
 logger.info("GPT-2 model initialized")
 
@@ -311,5 +335,7 @@ interface = gr.Interface(
 
 if __name__ == "__main__":
     logger.info("Starting Gradio interface...")
+    
+    # huggingface gitpod colab 
     interface.launch(server_name="0.0.0.0", server_port=7860, share=True, debug=True)
     logger.info("Gradio interface launched successfully")
