@@ -29,8 +29,8 @@ proxies = getproxies()
 os.environ["no_proxy"]    = "localhost, 127.0.0.1/8, ::1"
 
 # port forward
-from google.colab.output import eval_js
-print(eval_js("google.colab.kernel.proxyPort(7860)"))
+# from google.colab.output import eval_js
+# print(eval_js("google.colab.kernel.proxyPort(7860)"))
 
 
 # Configuration Constants
@@ -69,7 +69,7 @@ whisper_asr = pipeline("automatic-speech-recognition", model="openai/whisper-lar
 logger.info("Whisper model initialized")
 
 logger.info("Initializing Stable Diffusion model...")
-stable_diffusion = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16)
+stable_diffusion = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float32)
 stable_diffusion = stable_diffusion.to("cuda" if torch.cuda.is_available() else "cpu")
 logger.info("Stable Diffusion model initialized")
 
