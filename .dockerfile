@@ -1,5 +1,8 @@
 FROM gitpod/workspace-full
 # FROM python:3.9-slim
+
+USER root
+
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     libsm6 \
