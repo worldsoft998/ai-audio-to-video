@@ -5,8 +5,8 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 image:
     file: .dockerfile
-tasks:
-  - init: pip install -r requirements.txt
-    command: python app.py
+# tasks:
+ #  - init: pip install -r requirements.txt
+ #    command: python app.py
 
 
