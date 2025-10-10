@@ -21,25 +21,25 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --d
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN useradd -m -u 1000 user
-USER user
+# RUN useradd -m -u 1000 user
+# USER user
 
 # Create the gitpod user. UID must be 33333.
 # RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
-# USER gitpod
+USER gitpod
 
-ENV PATH="/home/user/.local/bin:$PATH"
-# ENV PATH="/home/gitpod/.local/bin:$PATH"
+# ENV PATH="/home/user/.local/bin:$PATH"
+ENV PATH="/home/gitpod/.local/bin:$PATH"
 
 WORKDIR /app
 
-COPY --chown=user ./requirements.txt requirements.txt
-# COPY --chown=gitpod ./requirements.txt requirements.txt
+# COPY --chown=user ./requirements.txt requirements.txt
+COPY --chown=gitpod ./requirements.txt requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-COPY --chown=user ./app.py app.py
-# COPY --chown=gitpod ./app.py app.py
+# COPY --chown=user ./app.py app.py
+COPY --chown=gitpod ./app.py app.py
 
 EXPOSE 7860
 CMD ["python", "app.py"]
