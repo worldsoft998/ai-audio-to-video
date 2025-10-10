@@ -11,5 +11,5 @@ image:
 
 ports:
  - port: 7860
-
+   onOpen: ignore
 
