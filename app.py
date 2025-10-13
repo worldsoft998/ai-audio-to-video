@@ -7,7 +7,8 @@ import sys
 import os
 import logging
 import shutil
-from moviepy.editor import AudioFileClip, ImageClip, CompositeVideoClip
+# from moviepy.editor import AudioFileClip, ImageClip, CompositeVideoClip
+from moviepy.video.io.VideoFileClip import VideoFileClip, AudioFileClip
 from transformers import pipeline
 from PIL import Image, ImageDraw, ImageFont
 from concurrent.futures import ThreadPoolExecutor, as_completed
