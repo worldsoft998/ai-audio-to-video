@@ -9,6 +9,6 @@ image:
  #  - init: pip install -r requirements.txt
  #    command: python app.py
 
-# ports:
-# - port: 7860
-
+ports:
+ - port: 7860
+   onOpen: open-preview
